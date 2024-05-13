@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: OnestFont;
+  src: url(Onest-VariableFont_wght.ttf);
+}
+
+:root {
+  font-family: OnestFont, sans-serif;
+  color: white;
+}
+
+.body-landing{
+  background: url("/src/assets/bg-home.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.body-input{
+  background: url("/src/assets/bg-pusat.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
