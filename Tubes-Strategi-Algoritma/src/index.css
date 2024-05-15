@@ -27,3 +27,19 @@
   background-size: cover;
   height: 100vh;
 }
+
+.body-jarak{
+  background: url("/src/assets/bg-jarak.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.body-tempuh{
+  background: url("/src/assets/bg-3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
