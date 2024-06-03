@@ -1,15 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const InputWaktu = ({ updateEntry }) => {
+const InputWaktu = () => {
   const navigate = useNavigate();
-
-  const handleSelectTime = (time) => {
-    const currentDate = new Date().toLocaleDateString();
-    updateEntry("time", time);
-    updateEntry("date", currentDate);
-    navigate("/inputjarak");
-  };
 
   return (
     <div className="body-input px-[35px]">
@@ -20,10 +13,10 @@ const InputWaktu = ({ updateEntry }) => {
           </h2>
           <h2 className="text-[16px] mt-[10px] md:text-[20px]">Pilih Waktu Lari</h2>
           <div className="mt-[40px]">
-            <button className="btn bg-transparent text-white hover:bg-white hover:text-black border-2 border-white px-[30px] mr-[40px] md:mr-[90px] md:px-[50px]" onClick={() => handleSelectTime("Pagi")}>
+            <button className="btn bg-transparent text-white hover:bg-white hover:text-black border-2 border-white px-[30px] mr-[40px] md:mr-[90px] md:px-[50px]" onClick={() => navigate("/showdata")}>
               Pagi
             </button>
-            <button className="btn bg-transparent text-white hover:bg-white hover:text-black border-2 border-white px-[30px] md:px-[50px]" onClick={() => handleSelectTime("Sore")}>
+            <button className="btn bg-transparent text-white hover:bg-white hover:text-black border-2 border-white px-[30px] md:px-[50px]" onClick={() => navigate("/inputjarak")}>
               Sore
             </button>
           </div>

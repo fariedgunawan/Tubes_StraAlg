@@ -2,15 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../src/index.css";
 
-const InputTempuh = ({ updateEntry }) => {
+const InputTempuh = () => {
   const navigate = useNavigate();
-  const [duration, setDuration] = useState("");
-
-  const handleSubmit = () => {
-    updateEntry("duration", `${duration} Menit`);
-    navigate("/");
-  };
-
   return (
     <div className="body-tempuh">
       <div className="flex flex-col items-center justify-center min-h-screen gap-[30px] sm:gap-[40px]">
@@ -28,7 +21,7 @@ const InputTempuh = ({ updateEntry }) => {
             <p className="py-4">Apakah Kamu Yakin Telah Input Data Dengan Sesuai? Klik OK untuk Submit</p>
             <div className="modal-action">
               <form method="dialog">
-                <button className="btn bg-[#41BE46] text-white" onClick={handleSubmit}>
+                <button className="btn bg-[#41BE46] text-white" onClick={() => navigate("/")}>
                   Ok
                 </button>
               </form>

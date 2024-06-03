@@ -2,9 +2,8 @@ import React from "react";
 import { FaAngleLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
-const ShowData = ({ data }) => {
+const ShowData = () => {
   const navigate = useNavigate();
-  console.log("Data Array:", data);
   return (
     <div className="px-[35px]">
       <div>
@@ -21,8 +20,8 @@ const ShowData = ({ data }) => {
           {data.map((entry, index) => (
             <div key={index} className="flex items-center justify-between border-2 px-[10px] py-[10px] rounded-md md:rounded-2xl mt-[30px] md:px-[30px]">
               <h2 className="md:text-[25px] font-bold">{entry.date}</h2>
-              <h2 className="md:text-[25px] font-bold">{entry.time}</h2>
-              <h2 className="md:text-[25px] font-bold">{entry.distance}</h2>
+              <h2 className="md:text-[25px] font-bold flex">{entry.time}<span>Menit</span></h2>
+              <h2 className="md:text-[25px] font-bold">{entry.distance}<span>Km</span></h2>
               <h2 className="md:text-[25px] font-bold">{entry.duration}</h2>
             </div>
           ))}

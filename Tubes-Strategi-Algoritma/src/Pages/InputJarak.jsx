@@ -2,15 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../src/index.css";
 
-const InputJarak = ({ updateEntry }) => {
+const InputJarak = () => {
   const navigate = useNavigate();
-  const [distance, setDistance] = useState("");
-
-  const handleNext = () => {
-    updateEntry("distance", `${distance} Km`);
-    navigate("/inputtempuh");
-  };
-
   return (
     <div className="body-jarak">
       <div className="flex flex-col items-center justify-center min-h-screen gap-[30px] sm:gap-[40px]">
@@ -19,7 +12,7 @@ const InputJarak = ({ updateEntry }) => {
           <input type="number" value={distance} onChange={(e) => setDistance(e.target.value)} placeholder="Jarak" className="bg-transparent focus:outline-none w-full text-[20px] sm:text-[30px]" />
           <h2 className="font-semibold text-[20px] sm:text-[30px]">Km</h2>
         </div>
-        <button className="btn text-white hover:bg-white bg-[#415DBE] hover:text-[#415DBE] border-0 px-[40px] sm:px-[50px] sm:text-[20px]" onClick={handleNext}>
+        <button className="btn text-white hover:bg-white bg-[#415DBE] hover:text-[#415DBE] border-0 px-[40px] sm:px-[50px] sm:text-[20px]" onClick={() => navigate("/")}>
           Next
         </button>
       </div>
