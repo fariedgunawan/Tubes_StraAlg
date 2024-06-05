@@ -17,7 +17,7 @@ function generateRandomDate() {
 function generateMockData() {
   const mockData = [];
   const timesOfDay = ["Pagi", "Sore"];
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 20000; i++) {
     const randomDate = generateRandomDate();
     const date = `${randomDate.getFullYear()}-${(randomDate.getMonth() + 1)
       .toString()
@@ -44,11 +44,11 @@ function App() {
   };
 
   const addEntry = () => {
-    // Convert distance and duration to integers
+
     const distanceInt = parseInt(currentEntry.distance);
     const durationInt = parseInt(currentEntry.duration);
 
-    // Check if all fields are filled and are valid integers
+    
     if (
       currentEntry.date.trim() !== "" &&
       currentEntry.time.trim() !== "" &&

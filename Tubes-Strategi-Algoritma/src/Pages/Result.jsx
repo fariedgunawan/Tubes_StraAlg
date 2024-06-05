@@ -6,22 +6,6 @@ const Result = ({ data }) => {
   const [greedyExecutionTime, setGreedyExecutionTime] = useState(null);
   const [bruteForceExecutionTime, setBruteForceExecutionTime] = useState(null);
 
-  // Algoritma brute force untuk menemukan hasil optimal
-  function bruteForceOptimalRun(runs) {
-    let bestRun = runs[0];
-    let bestRatio = runs[0].distance / runs[0].duration;
-
-    for (let run of runs) {
-      let currentRatio = run.distance / run.duration;
-      if (currentRatio > bestRatio) {
-        bestRun = run;
-        bestRatio = currentRatio;
-      }
-    }
-
-    return bestRun;
-  }
-
   // Algoritma greedy untuk menemukan hasil optimal
   function greedyOptimalRun(runs) {
     let bestRun = runs[0];
@@ -38,26 +22,35 @@ const Result = ({ data }) => {
     return bestRun;
   }
 
-  useEffect(() => {
-    // Panggil kedua fungsi optimal di sini
-    if (data.length > 0) {
-      const startTimeGreedy = performance.now();
-      const greedyPromise = new Promise((resolve) => {
-        resolve(greedyOptimalRun(data));
-      });
-      const startTimeBruteForce = performance.now();
-      const bruteForcePromise = new Promise((resolve) => {
-        resolve(bruteForceOptimalRun(data));
-      });
+  // Algoritma brute force untuk menemukan hasil optimal
+  function bruteForceOptimalRun(runs) {
+    let bestRun = runs[0];
+    let bestRatio = runs[0].distance / runs[0].duration;
 
-      Promise.all([greedyPromise, bruteForcePromise]).then(([greedyResult, bruteForceResult]) => {
-        const endTimeGreedy = performance.now();
-        const endTimeBruteForce = performance.now();
-        setGreedyExecutionTime((endTimeGreedy - startTimeGreedy).toFixed(6));
-        setBruteForceExecutionTime((endTimeBruteForce - startTimeBruteForce).toFixed(6));
-        setGreedyResult(greedyResult);
-        setBruteForceResult(bruteForceResult);
-      });
+    for (let run of runs) {
+      let currentRatio = run.distance / run.duration;
+      if (currentRatio > bestRatio) {
+        bestRun = run;
+        bestRatio = currentRatio;
+      }
+    }
+
+    return bestRun;
+  }
+
+  useEffect(() => {
+    if (data.length > 0) {
+      const startTimeBruteForce = performance.now();
+      const bruteForceResult = bruteForceOptimalRun(data);
+      const endTimeBruteForce = performance.now();
+      setBruteForceResult(bruteForceResult);
+      setBruteForceExecutionTime((endTimeBruteForce - startTimeBruteForce).toFixed(6));
+
+      const startTimeGreedy = performance.now();
+      const greedyResult = greedyOptimalRun(data);
+      const endTimeGreedy = performance.now();
+      setGreedyResult(greedyResult);
+      setGreedyExecutionTime((endTimeGreedy - startTimeGreedy).toFixed(6));
     }
   }, [data]);
 
