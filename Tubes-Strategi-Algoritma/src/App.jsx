@@ -17,14 +17,14 @@ function generateRandomDate() {
 function generateMockData() {
   const mockData = [];
   const timesOfDay = ["Pagi", "Sore"];
-  for (let i = 0; i < 20000; i++) {
+  for (let i = 0; i < 10000; i++) {
     const randomDate = generateRandomDate();
     const date = `${randomDate.getFullYear()}-${(randomDate.getMonth() + 1)
       .toString()
       .padStart(2, "0")}-${randomDate.getDate().toString().padStart(2, "0")}`;
     const time = timesOfDay[Math.floor(Math.random() * timesOfDay.length)]; // Randomly select "Pagi" or "Sore"
-    const distance = Math.floor(Math.random() * 100) + 1; // Random distance between 1 and 100
-    const duration = Math.floor(Math.random() * 300) + 30; // Random duration between 30 and 330 minutes
+    const distance = Math.floor(Math.random() * 10) + 1; // Random distance between 1 and 10
+    const duration = Math.floor(Math.random() * 200) + 30; // Random duration between 30 and 230 minutes
     mockData.push({ date, time, distance, duration });
   }
   return mockData;
