@@ -40,17 +40,23 @@ const Result = ({ data }) => {
 
   useEffect(() => {
     if (data.length > 0) {
-      const startTimeBruteForce = performance.now();
-      const bruteForceResult = bruteForceOptimalRun(data);
-      const endTimeBruteForce = performance.now();
-      setBruteForceResult(bruteForceResult);
-      setBruteForceExecutionTime((endTimeBruteForce - startTimeBruteForce).toFixed(6));
-
       const startTimeGreedy = performance.now();
       const greedyResult = greedyOptimalRun(data);
       const endTimeGreedy = performance.now();
       setGreedyResult(greedyResult);
-      setGreedyExecutionTime((endTimeGreedy - startTimeGreedy).toFixed(6));
+      const greedyTime = endTimeGreedy - startTimeGreedy;
+      setGreedyExecutionTime(greedyTime.toFixed(6));
+      console.log(`Greedy Execution Time: ${greedyTime.toFixed(6)} ms`);
+
+      setTimeout(() => {
+        const startTimeBruteForce = performance.now();
+        const bruteForceResult = bruteForceOptimalRun(data);
+        const endTimeBruteForce = performance.now();
+        setBruteForceResult(bruteForceResult);
+        const bruteForceTime = endTimeBruteForce - startTimeBruteForce;
+        setBruteForceExecutionTime(bruteForceTime.toFixed(6));
+        console.log(`Brute Force Execution Time: ${bruteForceTime.toFixed(6)} ms`);
+      }, 0); // Set timeout to ensure they don't run at exactly the same time
     }
   }, [data]);
 
